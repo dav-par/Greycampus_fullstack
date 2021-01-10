@@ -1,0 +1,13 @@
+.flexbox-container{
+    border: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.flexbox-container .box{
+    width: auto;
+    border: solid 1px red;
+    padding: 5px;
+    margin: 5px;
+}
