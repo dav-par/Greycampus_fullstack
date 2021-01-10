@@ -1,0 +1,24 @@
+.grid-container{
+    text-align: center;
+    display: grid;
+}
+
+.grid-container .header{
+    border: solid 1px black;
+    grid-column: 1/4;
+}
+
+.grid-cotainer .footer{
+    border-top: solid 1px black;
+    grid-column: 1/4;
+}
+
+.grid-cotainer .sidebar{
+    border-right: solid 1px black;
+    text-align: left;
+}
+
+.grid-cotainer .content{
+    text-align: left;
+    min-height: 600px;
+}
