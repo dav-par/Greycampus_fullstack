@@ -1,0 +1,47 @@
+body{
+    position: relative;
+    top: 20px;
+    margin: auto;
+    width: fit-content;
+    padding: 40px;
+    padding-top: 20px;
+    border: solid 1px rebeccapurple;    
+}
+
+.container{
+    max-width: 1920px;
+}
+
+.score{
+    text-align: center;
+    margin: 10px auto;
+
+}
+
+.game-wrapper{
+    width: 80vh;
+    height: 80vh;
+    min-width: 420px;
+    min-height: 420px;
+    border: solid 1px black;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.game-wrapper:after{
+    content: '';
+    display: block;
+    clear: both;
+    float: none;
+}
+
+
+.game-wrapper .box{
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    border: solid 1px darkslategrey;
+    float: left;
+}
