@@ -10,7 +10,7 @@
 4 5 1 2 3 4 5 1
 2 3 4 5 1 2 3 4 */
 
-const colors = ['blue', 'red', 'green', 'yellow', 'pink'];
+const colors = ['lightblue', 'lightred', 'lightgreen', 'lightyellow', 'lightpink'];
 var boxes = document.getElementsByClassName('box');
 
 for(var i=0; i<boxes.length; i++){
