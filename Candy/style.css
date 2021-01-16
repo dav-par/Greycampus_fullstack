@@ -45,3 +45,5 @@ body{
     border: solid 1px darkslategrey;
     float: left;
 }
+
+.game-wrapper .box.c1{ background: lightblue; }
