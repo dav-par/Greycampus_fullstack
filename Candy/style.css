@@ -46,4 +46,13 @@ body{
     float: left;
 }
 
-.game-wrapper .box.c1{ background: lightblue; }
+.game-wrapper .box.c1{ background: lightblue;
+}
+.game-wrapper .box.c2{ background: red;
+}
+.game-wrapper .box.c3{ background: lightgreen;
+}
+.game-wrapper .box.c4{ background: lightyellow;
+}
+.game-wrapper .box.c5{ background: lightpink;
+}
