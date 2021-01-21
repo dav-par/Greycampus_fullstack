@@ -11,7 +11,7 @@ body{
     max-width: 1920px;
 }
 
-.score{
+.start{
     font-size: 1.5em;
     text-align: center;
     margin: 10px auto;
@@ -38,4 +38,3 @@ body{
     margin: 0.5vw;
     font-size: 5em;
 }
-

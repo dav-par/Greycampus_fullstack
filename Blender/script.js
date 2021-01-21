@@ -1,11 +1,14 @@
 
 const BOXCOUNT = 5;
 const gameWrapEl = document.getElementById('game-wrapper');
+const startEl = document.getElementById('score');
+console.log(startEl);
 
 /* need to make a gradient of colours based on one colour
 break in to BOXCOUNT shades
 assign to boxes in random order
 keep track of correct order */
+
 
 
 //Generates random number for diffrent colours
@@ -44,8 +47,18 @@ function generateBoxes(){  //These will need colours, log of correct order and p
         div.addEventListener("dragover", allowDrop);
         div.addEventListener("drop", drop);
     }
+    randomiseBoxes();
     console.log(correctOrder);
     console.log("");
+    
+}
+
+function randomiseBoxes(){
+    for(i=0; i<(BOXCOUNT*BOXCOUNT); i++){
+        Random = getRandomInt(1, BOXCOUNT);
+        Random2 = getRandomInt(1, BOXCOUNT);
+        gameWrapEl.childNodes[Random].before(gameWrapEl.childNodes[Random2]);
+    }
 }
 
 function generateActualOrder(){
@@ -67,8 +80,21 @@ function checkOrder(actualOrder){
     for (var i = 0; i < x.length; i++) {
 		if (x[i] !== y[i]) return false;
     }
-    console.log("winner!");
+    //console.log("winner!");
     return true;
+}
+function tryHarder(){
+    console.log("nope!");
+    var x = startEl;
+    x.innerHTML = "almost, but there's more to do";
+    console.log(x);
+}
+
+function winner(){
+    console.log("winner!");
+    var x = startEl;
+    x.innerHTML = "WINNER!";
+    console.log(x);
 }
 
 function drag(event){
@@ -95,6 +121,7 @@ function drop(event) {
     //console.log(correctOrder);
     //console.log(" ");
     checkOrder(actualOrder);
+    if(checkOrder(actualOrder) == true){winner()} else{tryHarder()};
     //console.log("");
 }
 
