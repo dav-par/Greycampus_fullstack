@@ -20,17 +20,22 @@ body{
 
 .game-wrapper{
     display: flex;
-    min-width: 420px;
-    min-height: 100px;
-    border: solid 1px black;
-    margin: 0 auto;
+    border: solid 0.5vw black;
+    border-radius: 2vw;
+    padding: 5vh 5vw;
 }
 
 .game-wrapper .box{
     width: 10vw;
     box-sizing: border-box;
     height: 10vw;
-    border: solid 1px darkslategrey;
+    border: solid 0.5vw darkslategrey;
     float: left;
+    border-radius: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5vw;
+    font-size: 6em;
 }
 
