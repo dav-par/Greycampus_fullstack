@@ -30,12 +30,12 @@ body{
     box-sizing: border-box;
     height: 10vw;
     border: solid 0.5vw darkslategrey;
-    float: left;
+    float:left;
     border-radius: 2vw;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0.5vw;
-    font-size: 6em;
+    font-size: 5em;
 }
 
