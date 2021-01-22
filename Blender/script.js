@@ -2,7 +2,6 @@
 const BOXCOUNT = 5;
 const gameWrapEl = document.getElementById('game-wrapper');
 const startEl = document.getElementById('score');
-console.log(startEl);
 
 /* need to make a gradient of colours based on one colour
 break in to BOXCOUNT shades
@@ -23,9 +22,9 @@ function generateColors(){
     let colors = [];
     let mainColour = getRandomInt(0,360);
         for(i=0, change=0; i<BOXCOUNT; i++){
-        var change = change + (i*6);
-        colors[i] = "hsl("+(mainColour+change)+",100%,50%)";
-    }
+            if((mainColour + (BOXCOUNT*6)) > 360 ){var change = change - (i*6);}else{var change = change + (i*6)};
+            colors[i] = "hsl("+(mainColour+change)+",100%,50%)";
+        }
     console.log("maincolour:",mainColour);
     console.log("");
     return colors
