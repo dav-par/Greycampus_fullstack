@@ -153,6 +153,17 @@ function drop(event) {
     //console.log("");
 }
 
+function refresh(){
+    console.log("hi");
+    for(i=0; i < BOXCOUNT; i++){
+        var myobj = document.getElementById("box"+i);
+        myobj.remove();
+    }
+    var z = startEl;
+    z.innerHTML = "Back for more?";
+    gameInit();
+}
+
 function gameInit(){
     generateBoxes();
 }
