@@ -11,7 +11,7 @@ keep track of correct order */
 
 
 
-//Generates random number for diffrent colours
+//Generates random number between two values
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -30,7 +30,7 @@ function generateColors(){
     console.log("");
     return colors
 }
-function generateBoxes(){  //These will need colours, log of correct order and put out randomly
+function generateBoxes(){  //applies colour, applies event listeners, add box id's
     var colors = generateColors();
     globalThis.correctOrder = [];
     for(i=0; i<BOXCOUNT; i++){
@@ -53,6 +53,7 @@ function generateBoxes(){  //These will need colours, log of correct order and p
     
 }
 
+//Reorders the boxes
 function randomiseBoxes(){
     for(i=0; i<(BOXCOUNT*BOXCOUNT); i++){
         Random = getRandomInt(1, BOXCOUNT);
@@ -61,6 +62,7 @@ function randomiseBoxes(){
     }
 }
 
+//Makes an array of the current order of boxes
 function generateActualOrder(){
     var x = [];
     for(i=0; i<BOXCOUNT; i++){
@@ -70,31 +72,57 @@ function generateActualOrder(){
     return x;
 }
 
+//checks the current order against the correct order forwards
 function checkOrder(actualOrder){
     //console.log(correctOrder);
     var x = correctOrder;
     var y = actualOrder;
-    console.log(x);
-    console.log(y);
-    console.log("");
+//    console.log(x);
+//    console.log(y);
+//    console.log("");
     for (var i = 0; i < x.length; i++) {
 		if (x[i] !== y[i]) return false;
     }
     //console.log("winner!");
     return true;
 }
-function tryHarder(){
+
+//provides motivation, checks current order in reverse against correct order
+function tryHarder(actualOrder){
     console.log("nope!");
-    var x = startEl;
-    x.innerHTML = "almost, but there's more to do";
+    var z = startEl;
+    z.innerHTML = "almost, but there's more to do";
+    var x = correctOrder;
+    var y = actualOrder;
     console.log(x);
+    console.log(y);
+    console.log("");
+    for (var i = 0; i < x.length; i++) {
+		if (x[(x.length-1-i)] !== y[i]) return false;
+    }
+    console.log("winner!");
+    return true;
 }
 
+//triggers when game is won, displays message and removes dragdrop events
 function winner(){
     console.log("winner!");
     var x = startEl;
     x.innerHTML = "WINNER!";
     console.log(x);
+    for(i=0; i<BOXCOUNT; i++){
+        div = gameWrapEl.childNodes[i];
+        console.log(div);
+        div.removeEventListener("dragstart", drag);
+        div.removeEventListener("dragover", allowDrop);
+        div.removeEventListener("drop", drop);
+        div.ondragstart = function () { return false; }
+    }
+/*     var div = document.getElementsByClassName('box');
+    console.log(div);
+    div.removeEventListener("dragstart", drag);
+    div.removeEventListener("dragover", allowDrop);
+    div.removeEventListener("drop", drop); */
 }
 
 function drag(event){
@@ -120,8 +148,8 @@ function drop(event) {
     //console.log(actualOrder);
     //console.log(correctOrder);
     //console.log(" ");
-    checkOrder(actualOrder);
-    if(checkOrder(actualOrder) == true){winner()} else{tryHarder()};
+    //checkOrder(actualOrder);
+    if(checkOrder(actualOrder) == true){winner()} else{if(tryHarder(actualOrder) == true){winner()}};
     //console.log("");
 }
 
