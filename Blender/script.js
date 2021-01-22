@@ -25,7 +25,7 @@ function generateColors(){
             if((mainColour + (BOXCOUNT*6)) > 360 ){var change = change - (i*6);}else{var change = change + (i*6)};
             colors[i] = "hsl("+(mainColour+change)+",100%,50%)";
         }
-    console.log("maincolour:",mainColour);
+    console.log("mainColour:",mainColour);
     console.log("");
     return colors
 }
@@ -133,7 +133,6 @@ function drop(event) {
 }
 
 function refresh(){
-    console.log("hi");
     for(i=0; i < BOXCOUNT; i++){
         var myobj = document.getElementById("box"+i);
         myobj.remove();
