@@ -56,8 +56,8 @@ function generateBoxes(){  //applies colour, applies event listeners, add box id
 //Reorders the boxes
 function randomiseBoxes(){
     for(i=0; i<(BOXCOUNT*BOXCOUNT); i++){
-        Random = getRandomInt(1, BOXCOUNT);
-        Random2 = getRandomInt(1, BOXCOUNT);
+        Random = getRandomInt(1, (BOXCOUNT+1));
+        Random2 = getRandomInt(1, (BOXCOUNT+1));
         gameWrapEl.childNodes[Random].before(gameWrapEl.childNodes[Random2]);
     }
 }
