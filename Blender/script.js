@@ -23,13 +23,14 @@ function generateColors(){
     let colors = [];
     let mainColour = getRandomInt(0,360);
         for(i=0, change=0; i<BOXCOUNT; i++){
-        var change = change + (i*5);
+        var change = change + (i*6);
         colors[i] = "hsl("+(mainColour+change)+",100%,50%)";
     }
     console.log("maincolour:",mainColour);
     console.log("");
     return colors
 }
+
 function generateBoxes(){  //applies colour, applies event listeners, add box id's
     var colors = generateColors();
     globalThis.correctOrder = [];
@@ -37,7 +38,7 @@ function generateBoxes(){  //applies colour, applies event listeners, add box id
         var div = document.createElement('div');
         var color = colors[i];
         div.classList.add('box');
-        div.innerHTML = i;
+        //div.innerHTML = i;
         div.id = 'box'+i;
         div.draggable = true;
         div.style.backgroundColor = color;
@@ -68,22 +69,16 @@ function generateActualOrder(){
     for(i=0; i<BOXCOUNT; i++){
         x[i] = gameWrapEl.childNodes[i+1];
     }
-    //console.log(x);
     return x;
 }
 
 //checks the current order against the correct order forwards
 function checkOrder(actualOrder){
-    //console.log(correctOrder);
     var x = correctOrder;
     var y = actualOrder;
-//    console.log(x);
-//    console.log(y);
-//    console.log("");
     for (var i = 0; i < x.length; i++) {
 		if (x[i] !== y[i]) return false;
     }
-    //console.log("winner!");
     return true;
 }
 
@@ -94,9 +89,6 @@ function tryHarder(actualOrder){
     z.innerHTML = "almost, but there's more to do";
     var x = correctOrder;
     var y = actualOrder;
-    console.log(x);
-    console.log(y);
-    console.log("");
     for (var i = 0; i < x.length; i++) {
 		if (x[(x.length-1-i)] !== y[i]) return false;
     }
@@ -109,20 +101,13 @@ function winner(){
     console.log("winner!");
     var x = startEl;
     x.innerHTML = "WINNER!";
-    console.log(x);
     for(i=0; i<=BOXCOUNT; i++){
         div = gameWrapEl.childNodes[i];
-        console.log(div);
         div.removeEventListener("dragstart", drag);
         div.removeEventListener("dragover", allowDrop);
         div.removeEventListener("drop", drop);
         div.ondragstart = function () { return false; }
     }
-/*     var div = document.getElementsByClassName('box');
-    console.log(div);
-    div.removeEventListener("dragstart", drag);
-    div.removeEventListener("dragover", allowDrop);
-    div.removeEventListener("drop", drop); */
 }
 
 function drag(event){
@@ -145,12 +130,7 @@ function drop(event) {
     drag_target.before(drop_target);
     tmp.replaceWith(drag_target);
     actualOrder = generateActualOrder();
-    //console.log(actualOrder);
-    //console.log(correctOrder);
-    //console.log(" ");
-    //checkOrder(actualOrder);
     if(checkOrder(actualOrder) == true){winner()} else{if(tryHarder(actualOrder) == true){winner()}};
-    //console.log("");
 }
 
 function refresh(){
