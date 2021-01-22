@@ -110,7 +110,7 @@ function winner(){
     var x = startEl;
     x.innerHTML = "WINNER!";
     console.log(x);
-    for(i=0; i<BOXCOUNT; i++){
+    for(i=0; i<=BOXCOUNT; i++){
         div = gameWrapEl.childNodes[i];
         console.log(div);
         div.removeEventListener("dragstart", drag);
